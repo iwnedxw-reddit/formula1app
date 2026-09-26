@@ -1,4 +1,5 @@
-import { faArrowUpFromBracket, faBug, faCalendarDays, faInfo, faRotateRight, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faArrowUpFromBracket, faCalendarDays, faInfo, faRotateRight, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { exitExpandedMode, navigateTo, requestExpandedMode, showForm } from "@devvit/web/client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -772,17 +773,17 @@ export function App() {
             navigateTo("https://developers.reddit.com/apps/formula1-app");
         }
     }, [appVersion]);
-    const showFeedbackForm = useCallback(async () => {
+    const showGitHubIssuesForm = useCallback(async () => {
         const result = await showForm({
-            title: "Feedback",
-            description: "Facing any issues or have suggestions for improvement?",
-            acceptLabel: "Continue",
+            title: "GitHub Issues",
+            description: "Use GitHub Issues to report bugs, request features, or share feedback.",
+            acceptLabel: "Open GitHub",
             cancelLabel: "Cancel",
             fields: [],
         });
 
         if (result.action === "SUBMITTED") {
-            navigateTo("https://www.reddit.com/r/formula1appdemo/comments/1ptnmms/feedback/");
+            navigateTo("https://github.com/iwnedxw-reddit/formula1app/issues");
         }
     }, []);
     const showUpdateForm = useCallback(async () => {
@@ -906,15 +907,14 @@ export function App() {
                                 <FontAwesomeIcon icon={faCalendarDays} />
                             </button>
                         </div>
-                        <div className="feedback-action">
+                        <div className="github-action">
                             <button
-                                className="bug-button"
                                 type="button"
-                                onClick={showFeedbackForm}
-                                aria-label="Send feedback"
-                                title="Send feedback"
+                                onClick={showGitHubIssuesForm}
+                                aria-label="Open GitHub issues"
+                                title="GitHub issues"
                             >
-                                <FontAwesomeIcon icon={faBug} />
+                                <FontAwesomeIcon icon={faGithub} />
                             </button>
                         </div>
                     </aside>

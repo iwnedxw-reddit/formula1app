@@ -269,13 +269,13 @@ button {
     color: var(--accent);
 }
 
-.feedback-action {
+.github-action {
     display: flex;
     justify-content: center;
     margin-top: 1px;
 }
 
-.feedback-action button {
+.github-action button {
     display: grid;
     place-items: center;
     width: 24px;
@@ -287,7 +287,7 @@ button {
     background: transparent;
 }
 
-.feedback-action svg {
+.github-action svg {
     width: 15px;
     height: 15px;
 }
