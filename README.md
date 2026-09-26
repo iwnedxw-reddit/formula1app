@@ -2,6 +2,8 @@
 
 Track live sessions, results, and championship standings - right from Reddit.
 
+[View the source code on GitHub](https://github.com/iwnedxw-reddit/formula1app)
+
 ## Features (for Moderators)
 - Create the F1 Tracker Post from your subreddit menu using "F1 App: Create Post" ([Mobile](https://i.imgur.com/zJNoILi.png), [Desktop](https://i.imgur.com/VMvB2OJ.png))
     - Customize the post title, team theme, flair, and comment sort
@@ -41,8 +43,7 @@ Track live sessions, results, and championship standings - right from Reddit.
 - Go to the "My Installations" section at the bottom of this page and update the app.
 
 ## Feedback, Questions, and Support
-- Please contact u/iwnedxw, or
-- Please use the "Send feedback" button at the bottom of this page.
+- Use [GitHub Issues](https://github.com/iwnedxw-reddit/formula1app/issues) to report bugs, request features, or share feedback.
 
 ## Screenshot
 ![Screenshot](https://i.imgur.com/HSjxNAX.png)
