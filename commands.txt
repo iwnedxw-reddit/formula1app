@@ -1,0 +1,6 @@
+npx devvit settings set latestVersion
+npx devvit settings set season
+npx devvit settings set cron
+0 0 * * 2
+$ npx devvit upload [--bump major|minor|patch|prerelease] [--copyPaste]
+npx devvit upload --bump minor

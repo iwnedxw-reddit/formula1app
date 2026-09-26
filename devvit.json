@@ -1,0 +1,96 @@
+{
+    "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+    "name": "formula1-app",
+    "post": {
+        "dir": "dist/client",
+        "entrypoints": {
+            "default": {
+                "entry": "index.html",
+                "height": "regular"
+            },
+            "map": {
+                "entry": "map.html"
+            }
+        }
+    },
+    "server": {
+        "dir": "dist/server",
+        "entry": "index.cjs"
+    },
+    "media": {
+        "dir": "assets/"
+    },
+    "menu": {
+        "items": [
+            {
+                "label": "F1 App: Create Post",
+                "location": "subreddit",
+                "forUserType": "moderator",
+                "endpoint": "/internal/menu/create-post"
+            },
+            {
+                "label": "F1 App: Modify Scheduled Posts",
+                "location": "subreddit",
+                "forUserType": "moderator",
+                "endpoint": "/internal/menu/modify-scheduled-posts"
+            },
+            {
+                "label": "F1 App: Automate Race Discussion Threads",
+                "location": "subreddit",
+                "forUserType": "moderator",
+                "endpoint": "/internal/menu/discussion-config"
+            }
+        ]
+    },
+    "forms": {
+        "postConfig": "/internal/form/post-config",
+        "schedulePost": "/internal/form/schedule-post",
+        "modifyScheduledPosts": "/internal/form/modify-scheduled-posts",
+        "discussionConfig": "/internal/form/discussion-config",
+        "confirmDiscussionConfig": "/internal/form/confirm-discussion-config"
+    },
+    "triggers": {
+        "onAppInstall": "/internal/triggers/app-installed",
+        "onAppUpgrade": "/internal/triggers/app-upgraded"
+    },
+    "scheduler": {
+        "tasks": {
+            "createScheduledPost": "/internal/scheduler/create-scheduled-post",
+            "unpinScheduledPost": "/internal/scheduler/unpin-scheduled-post",
+            "scheduleTheRaceDiscussionPosts": "/internal/scheduler/schedule-race-discussion-posts"
+        }
+    },
+    "settings": {
+        "global": {
+            "latestVersion": {
+                "type": "string",
+                "label": "latestVersion"
+            },
+            "season": {
+                "type": "string",
+                "label": "season"
+            },
+            "cron": {
+                "type": "string",
+                "label": "cron",
+                "defaultValue": "0 0 * * 2"
+            }
+        }
+    },
+    "permissions": {
+        "reddit": {
+            "enable": true,
+            "scope": "moderator"
+        },
+        "redis": true,
+        "http": {
+            "enable": true,
+            "domains": [
+                "site.api.espn.com"
+            ]
+        }
+    },
+    "marketingAssets": {
+        "icon": "assets/icon.png"
+    }
+}
