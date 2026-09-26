@@ -1,0 +1,1031 @@
+:root {
+    color-scheme: dark;
+    font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: #06070a;
+    color: #f8fbff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 300px;
+    height: 100vh;
+    overflow: hidden;
+    background: #06070a;
+}
+
+button {
+    font: inherit;
+}
+
+.app-shell {
+    --accent: #ff1436;
+    --accent-strong: #d50024;
+    --cyan: #7ce8ff;
+    --gold: #ffd37a;
+    position: relative;
+    display: grid;
+    height: 100vh;
+    max-height: 512px;
+    overflow: hidden;
+    padding: 3px;
+    background:
+        radial-gradient(circle at 8% 100%, color-mix(in srgb, var(--accent-strong) 18%, transparent), transparent 22%),
+        #0c0d0f;
+    user-select: none;
+}
+
+.app-shell select {
+    user-select: auto;
+}
+
+.app-shell::before {
+    content: none;
+}
+
+.orb {
+    display: none;
+}
+
+.orb-one {
+    width: 190px;
+    height: 190px;
+    right: -60px;
+    bottom: -80px;
+    background: rgba(255, 20, 54, 0.45);
+}
+
+.orb-two {
+    width: 120px;
+    height: 120px;
+    left: -40px;
+    top: 110px;
+    background: rgba(124, 232, 255, 0.28);
+}
+
+.tracker-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(178px, 0.82fr) minmax(0, 1.38fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.tracker-card > .race-summary,
+.tracker-card > .data-board {
+    margin-bottom: 50px;
+}
+
+.tracker-card::after {
+    content: none;
+}
+
+.tracker-card--full .data-board {
+    grid-column: 1 / -1;
+}
+
+.race-summary {
+    align-self: start;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 7px;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 9px;
+    padding: 12px 8px 5px;
+    text-align: center;
+    background: transparent;
+}
+
+.kicker {
+    color: var(--cyan);
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.race-summary h1 {
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+    color: var(--accent);
+    font-size: clamp(0.98rem, 2.7vw, 1.28rem);
+    line-height: 1.04;
+    text-overflow: ellipsis;
+    text-shadow: none;
+    text-transform: none;
+    white-space: nowrap;
+}
+
+.race-summary h1::first-letter {
+    color: inherit;
+}
+
+.race-summary p,
+.race-summary time,
+.round-line {
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: #aeb8c4;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.race-summary time {
+    line-height: 1.25;
+    white-space: normal;
+}
+
+.race-summary p {
+    margin-top: 6px;
+}
+
+.round-line {
+    display: block;
+    margin: 3px 0;
+}
+
+.session-card {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    align-content: center;
+    max-width: 140px;
+    min-height: 108px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 9px;
+    padding: 5px 8px;
+    background: #1a1a1a;
+    box-shadow: none;
+}
+
+.session-card::before {
+    content: none;
+}
+
+@keyframes scan {
+    45%,
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.session-card strong {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.05;
+}
+
+.session-card span {
+    color: #dbe8f6;
+    font-size: 0.68rem;
+    font-weight: 800;
+    margin: 7px 0;
+    text-transform: lowercase;
+}
+
+.session-card b {
+    color: var(--accent);
+    font-size: 1.2rem;
+    line-height: 1;
+    text-shadow: none;
+}
+
+.side-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+}
+
+.side-actions button {
+    min-width: 96px;
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #fff;
+    background: #24272b;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 5px;
+}
+
+.quick-actions button {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #aeb8c4;
+    background: transparent;
+}
+
+.quick-actions svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.quick-actions .info-button svg {
+    width: 14px;
+    height: 14px;
+    transform: scale(0.89);
+}
+
+.quick-actions .calendar-button svg {
+    width: 15px;
+    height: 15px;
+}
+
+.quick-actions .update-button {
+    color: var(--accent);
+}
+
+.feedback-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.feedback-action button {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 20px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #aeb8c4;
+    background: transparent;
+}
+
+.feedback-action svg {
+    width: 15px;
+    height: 15px;
+}
+
+.data-board {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 5px 6px 8px;
+    background: #17191b;
+}
+
+.data-board--full {
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding-top: 0;
+}
+
+.data-board--drivers,
+.data-board--teams {
+    padding-top: 5px;
+    background: transparent;
+}
+
+.data-board header {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    margin-bottom: 4px;
+    border-bottom: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+    padding-bottom: 4px;
+}
+
+.data-board header strong,
+.data-board header span {
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.data-board header span {
+    color: #d9e7f5;
+}
+
+.data-board header span::before {
+    content: "• ";
+    color: var(--cyan);
+}
+
+.grand-prix-select,
+.session-select {
+    max-width: 150px;
+    min-width: 0;
+    border: 0;
+    border-radius: 999px;
+    padding: 3px 18px 3px 8px;
+    color: #fff;
+    background: #24272b;
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.grand-prix-select {
+    max-width: 460px;
+    font-weight: 800;
+}
+
+.calendar-close-button {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    border-radius: 999px;
+    padding: 0;
+    cursor: pointer;
+    color: #fff;
+    background: #24272b;
+}
+
+.calendar-close-button svg {
+    width: 13px;
+    height: 13px;
+}
+
+.results-list,
+.standings-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    align-content: start;
+    grid-auto-rows: minmax(29px, max-content);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.results-list {
+    grid-auto-rows: minmax(33px, max-content);
+    gap: 5px;
+}
+
+.result-row {
+    min-height: 33px;
+}
+
+.result-row .position {
+    font-size: 0.7625rem;
+}
+
+.result-row strong {
+    font-size: 0.7825rem;
+}
+
+.result-row .points {
+    font-size: 0.7125rem;
+}
+
+.standings-list--single {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(33px, max-content);
+    gap: 6px;
+}
+
+.standings-list--grid {
+    grid-auto-rows: minmax(33px, max-content);
+    gap: 7px;
+}
+
+.standings-list--grid .standing-row {
+    min-height: 33px;
+}
+
+.standings-list--grid .position {
+    font-size: 0.7625rem;
+}
+
+.standings-list--grid .standing-row strong {
+    font-size: 0.7825rem;
+}
+
+.standings-list--grid .points {
+    font-size: 0.7125rem;
+}
+
+.standings-list--single .standing-row {
+    min-height: 34px;
+    padding: 6px 8px;
+    background: #202224;
+}
+
+.standings-list--single .position {
+    font-size: 0.7rem;
+}
+
+.standings-list--single .standing-row strong {
+    font-size: 0.72rem;
+}
+
+.standings-list--single .points {
+    font-size: 0.65rem;
+}
+
+.result-row,
+.standing-row {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    min-height: 29px;
+    border: 0;
+    border-radius: 8px;
+    padding: 4px 6px;
+    color: inherit;
+    background: #202224;
+    text-align: left;
+    box-shadow: none;
+}
+
+.standing-row {
+    width: 100%;
+    cursor: pointer;
+}
+
+.position {
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 400;
+}
+
+.position::after {
+    content: ".";
+}
+
+.position--medal::after {
+    content: "";
+}
+
+.result-row.is-podium .position {
+    color: var(--gold);
+    text-shadow: none;
+}
+
+.result-row strong,
+.standing-row strong {
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.72rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.result-row strong {
+    font-weight: 400;
+}
+
+.result-row strong.is-theme-driver {
+    color: color-mix(in srgb, var(--accent) 67%, white);
+}
+
+.standing-row strong.is-theme-team {
+    color: color-mix(in srgb, var(--accent) 67%, white);
+}
+
+.standing-row strong {
+    font-weight: 400;
+}
+
+.result-row > div > span,
+.standing-row > div > span {
+    display: none;
+}
+
+.points {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+    color: #ecf7ff;
+    font-size: 0.65rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.result-segment {
+    color: #9da8b2;
+    font-size: 0.55rem;
+    font-weight: 400;
+}
+
+.points--standings {
+    display: grid;
+    grid-template-columns: 34px 34px;
+    align-items: baseline;
+    justify-content: end;
+    gap: 8px;
+    min-width: 80px;
+    padding-right: 20px;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.points--standings > span {
+    font-weight: 400;
+    text-align: right;
+}
+
+.points--standings small {
+    color: #9da8b2;
+    font-size: 0.58rem;
+    font-weight: 500;
+    text-align: right;
+}
+
+.pager {
+    display: none;
+}
+
+.bottom-dock {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: auto repeat(3, minmax(0, 1fr)) 34px;
+    align-items: center;
+    gap: 14px;
+    align-self: end;
+    min-height: 44px;
+    border-radius: 14px 14px 0 0;
+    padding: 5px 14px 3px;
+    background: #050607;
+    box-shadow: none;
+}
+
+.bottom-dock button {
+    border: 0;
+    border-radius: 999px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: #fff;
+    background: transparent;
+    font-size: 0.76rem;
+    font-weight: 950;
+}
+
+.bottom-dock button.is-active {
+    background: var(--accent-strong);
+    box-shadow: none;
+}
+
+.bottom-dock .dock-icon-button {
+    display: grid;
+    place-items: center;
+    padding: 6px 0;
+    color: var(--accent);
+}
+
+.bottom-dock .dock-icon-button:first-child {
+    padding-left: 14px;
+}
+
+.bottom-dock .dock-icon-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.bottom-dock .dock-logo {
+    display: block;
+    width: auto;
+    height: 34px;
+    max-width: 72px;
+    object-fit: contain;
+}
+
+.empty-state {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 6px;
+    min-height: 140px;
+    align-content: center;
+    justify-items: center;
+    color: #a8b3bd;
+    text-align: center;
+}
+
+.empty-state strong {
+    color: #fff;
+}
+
+.awaiting-results {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 10px;
+    align-content: start;
+    min-height: 140px;
+    color: #a8b3bd;
+    text-align: center;
+}
+
+.awaiting-results > strong {
+    color: var(--accent);
+    font-size: 0.82rem;
+}
+
+.session-schedule {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+    width: min(100%, 420px);
+    margin: 0 auto;
+}
+
+.session-schedule-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+    min-height: 34px;
+    border-radius: 8px;
+    padding: 6px 9px;
+    background: #202224;
+    text-align: center;
+}
+
+.session-schedule-row span {
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.session-schedule-row time {
+    color: #c6d0d8;
+    font-size: 0.62rem;
+    white-space: nowrap;
+}
+
+.calendar-schedule-panel {
+    display: grid;
+    grid-column: 1 / -1;
+    min-height: 0;
+    align-content: start;
+    padding-top: 6px;
+}
+
+.modal-backdrop {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.map-modal {
+    position: relative;
+    width: min(760px, 100%);
+    max-height: 92vh;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    padding: 10px;
+    background: #000000;
+}
+
+.map-modal--expanded {
+    width: 100%;
+    height: calc(100vh - 24px);
+    max-height: none;
+}
+
+.map-modal--expanded .map-transform-wrapper {
+    height: 100% !important;
+}
+
+.map-transform-wrapper {
+    width: 100% !important;
+    height: min(430px, calc(92vh - 42px)) !important;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: grab;
+    touch-action: none;
+}
+
+.map-transform-wrapper:active {
+    cursor: grabbing;
+}
+
+.map-transform-content {
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-transform-content img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+
+.close-button {
+    position: absolute;
+    z-index: 3;
+    top: 8px;
+    right: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+    @media (max-width: 620px) {
+    .app-shell {
+        padding: 3px;
+    }
+
+    .tracker-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1fr);
+        gap: 6px;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .tracker-card:not(.tracker-card--full) {
+        grid-template-columns: minmax(112px, 28%) minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr);
+    }
+
+    .tracker-card > .race-summary,
+    .tracker-card > .data-board {
+        margin-bottom: 44px;
+    }
+
+    .race-summary {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        justify-items: center;
+        gap: 3px 8px;
+        padding: 3px 0 0;
+        text-align: center;
+    }
+
+    .kicker,
+    .race-summary h1,
+    .race-summary p,
+    .round-line,
+    .race-summary time {
+        grid-column: 1;
+    }
+
+    .tracker-card:not(.tracker-card--full) .race-summary {
+        grid-template-columns: 1fr;
+        align-content: center;
+        gap: 6px;
+        padding: 11px 8px 5px;
+    }
+
+    .tracker-card:not(.tracker-card--full) .race-summary h1 {
+        white-space: normal;
+    }
+
+    .session-card {
+        grid-column: 2;
+        grid-row: 1 / span 4;
+        min-width: 96px;
+        margin: 0;
+        gap: 2px;
+        padding: 4px 6px;
+        text-align: center;
+    }
+
+    .tracker-card:not(.tracker-card--full) .session-card {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+        min-width: 0;
+        min-height: 104px;
+        margin: 10px 0 8px;
+    }
+
+    .session-card strong {
+        font-size: 0.86rem;
+    }
+
+    .session-card b {
+        font-size: 1.04rem;
+    }
+
+    .side-actions {
+        display: none;
+    }
+
+    .tracker-card:not(.tracker-card--full) .side-actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    .tracker-card:not(.tracker-card--full) .side-actions button {
+        min-width: 82px;
+        padding: 5px 9px;
+        font-size: 0.68rem;
+    }
+
+    .tracker-card:not(.tracker-card--full) .quick-actions {
+        gap: 12px;
+        margin-top: 3px;
+    }
+
+    .tracker-card:not(.tracker-card--full) .quick-actions button {
+        width: 22px;
+        height: 22px;
+    }
+
+    .tracker-card:not(.tracker-card--full) .quick-actions svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .tracker-card:not(.tracker-card--full) .quick-actions .calendar-button svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .data-board {
+        padding: 5px 7px 7px;
+    }
+
+    .data-board header {
+        margin-bottom: 4px;
+    }
+
+    .grand-prix-select {
+        max-width: 260px;
+    }
+
+    .session-select {
+        max-width: 122px;
+    }
+
+    .results-list,
+    .standings-list {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .results-list {
+        grid-auto-rows: minmax(31px, max-content);
+        gap: 4px;
+    }
+
+    .result-row {
+        min-height: 31px;
+    }
+
+    .standings-list--single {
+        gap: 6px;
+    }
+
+    .standings-list--grid {
+        gap: 6px;
+    }
+
+    .result-row,
+    .standing-row {
+        min-height: 28px;
+        padding: 4px 7px;
+    }
+
+    .result-row strong,
+    .standing-row strong {
+        font-size: 0.7rem;
+    }
+
+    .points {
+        font-size: 0.62rem;
+    }
+
+    .result-row .position {
+        font-size: 0.7625rem;
+    }
+
+    .result-row strong {
+        font-size: 0.7625rem;
+    }
+
+    .result-row .points {
+        font-size: 0.6825rem;
+    }
+
+    .standings-list--grid .position {
+        font-size: 0.7625rem;
+    }
+
+    .standings-list--grid .standing-row strong {
+        font-size: 0.7625rem;
+    }
+
+    .standings-list--grid .points {
+        font-size: 0.6825rem;
+    }
+
+    .pager {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 7px;
+        margin-top: 4px;
+    }
+
+    .pager button {
+        border: 0;
+        border-radius: 999px;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: #fff;
+        background: #24272b;
+        font-size: 0.64rem;
+        font-weight: 900;
+    }
+
+    .pager button:disabled {
+        cursor: default;
+        opacity: 0.35;
+    }
+
+    .pager span {
+        color: #aeb8c4;
+        font-size: 0.62rem;
+        font-weight: 900;
+        white-space: nowrap;
+    }
+
+    .bottom-dock {
+        grid-template-columns: auto repeat(3, minmax(0, 1fr)) 28px;
+        gap: 4px;
+        min-height: 38px;
+        padding: 2px 5px 0;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .bottom-dock button {
+        padding: 5px 4px;
+        font-size: 0.66rem;
+    }
+
+    .bottom-dock .dock-icon-button {
+        padding: 5px 0;
+    }
+
+    .bottom-dock .dock-icon-button:first-child {
+        padding-left: 10px;
+    }
+
+    .bottom-dock .dock-icon-button svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .bottom-dock .dock-logo {
+        height: 30px;
+        max-width: 58px;
+    }
+
+}
